@@ -1,37 +1,50 @@
-class ZeroBounceApi {
-    constructor(apiKey){
-        var baseUrl = "https://api.zerobounce.net/v2";
-        var get = new XMLHttpRequest();
-        /**
-         * @param apiKey - your private API key
-         * */
-        this.apiKey = apiKey;
+import rp from 'request-promise';
 
-        /**
-         * @return the number of credits remaining on your account
-         * */
-        this.getCredits = function(){
-            var uri = baseUrl + "/getcredits" + "?api_key=" + apiKey;
-            get.open('GET', uri, false);
-            get.send();
-            if (get.readyState === 4 && get.status === 200) {
-                return get.responseText;
-            }
-        }
+const baseUrl = 'https://api.zerobounce.net/v2';
 
-
+/**
+ * @param {string} api_key - your private API key
+ * @return {{
+ *     getCredits: function(): (PromiseLike<number> | Promise<number>),
+ *     validate: function(string, string): (PromiseLike<*> | Promise<*>)
+ * }}
+ * @constructor object
+ */
+function
+// eslint-disable-next-line camelcase
+ZeroBounceApi(api_key) {
+    return {
         /**
-         * @param email - the email you want to validate
-         * @param ip - the ip to be use for this validation (optional)
-         * @return - a JSONObject with all of the information for the specified email
+         * @return {Promise<number>} the number of credits
+         * remaining on your account
          * */
-        this.validate = function(email, ip_address){
-            var uri = baseUrl + "/validate" + "?api_key=" + apiKey + "&email=" + email + "&ip_address=" + ip_address;
-            get.open('GET', uri, false);
-            get.send();
-            if (get.readyState == 4 && get.status == 200) {
-                return get.responseText;
-            }
-        }
-    }
+        getCredits: () => rp({
+            uri: baseUrl + '/getcredits',
+            qs: {
+                api_key,
+            },
+            json: true,
+        }).then((resp) => resp.Credits),
+        /**
+         *
+         * @param {string} email the email you want to validate
+         * @param {string} ip_address - the ip to be used
+         * for this validation (optional)
+         * @return {string} - a JSONObject with all of the information
+         * for the specified email
+         */
+        // eslint-disable-next-line camelcase
+        validate: (email, ip_address) => rp({
+            uri: baseUrl + '/validate',
+            qs: {
+                api_key,
+                email,
+                ip_address,
+            },
+            json: true,
+        }),
+    };
 }
+
+
+module.exports = ZeroBounceApi;
