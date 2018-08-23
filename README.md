@@ -1,19 +1,19 @@
 ZeroBounce API v2 (node version)
 
-# This is an unofficial port of https://github.com/zerobounce/zerobounce-javascript-api-v2 to node 
+## This is an unofficial port of [zerobounce javascript api v2](https://github.com/zerobounce/zerobounce-javascript-api-v2 to node) 
 
-## Usage :
-### Init :  
+# Usage :
+## Init :  
 ```ecmascript 6
 const zeroBounceApi = require('../ZeroBounceApi');
 const zb = zeroBounceApi('xxxxxxxxx'); // put your api key
 ```
-### Get Credits :  
+## Get Credits :  
 ```ecmascript 6
 zb.getCredits()
   .then((credits)=> console.log(credits)); // credits is type number
 ```
-### Validate : 
+## Validate : 
 ```ecmascript 6
 zb.getCredits()
   .validate((resp)=> console.log(resp)); // see resp values below
