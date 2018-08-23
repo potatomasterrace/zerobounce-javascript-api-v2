@@ -1,6 +1,6 @@
-[ZeroBounce](https://www.zerobounce.net>) API v2 (node version)
+ZeroBounce API v2 (node version)
 
-#This is an unofficial port of https://github.com/zerobounce/zerobounce-javascript-api-v2 to node 
+# This is an unofficial port of https://github.com/zerobounce/zerobounce-javascript-api-v2 to node 
 
 ## Usage :
 ### Init :  
