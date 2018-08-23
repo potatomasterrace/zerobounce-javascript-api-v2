@@ -1,16 +1,23 @@
-[ZeroBounce](https://www.zerobounce.net>) JavaScript API v2
+[ZeroBounce](https://www.zerobounce.net>) API v2 (node version)
 
-This is a JavaScript wrapper class example for the ZeroBounce API v2.
+#This is an unofficial port of https://github.com/zerobounce/zerobounce-javascript-api-v2 to node 
 
-##### Example usage:
-
-```javascript
-var ZeroBounceApi = new ZeroBounceApi(apiKey)
-ZeroBounceApi.apiKey
-ZeroBounceApi.getCredits()
-ZeroBounceApi.validate("some@email.com")
+## Usage :
+### Init :  
+```ecmascript 6
+const zeroBounceApi = require('../ZeroBounceApi');
+const zb = zeroBounceApi('xxxxxxxxx'); // put your api key
 ```
-
+### Get Credits :  
+```ecmascript 6
+zb.getCredits()
+  .then((credits)=> console.log(credits)); // credits is type number
+```
+### Validate : 
+```ecmascript 6
+zb.getCredits()
+  .validate((resp)=> console.log(resp)); // see resp values below
+```
 **Properties and possible values returned by:**
 1. <b><i>validate</b></i> method
   

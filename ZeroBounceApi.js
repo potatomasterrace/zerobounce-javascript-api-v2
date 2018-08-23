@@ -1,4 +1,4 @@
-import rp from 'request-promise';
+const rp = require('request-promise');
 
 const baseUrl = 'https://api.zerobounce.net/v2';
 
