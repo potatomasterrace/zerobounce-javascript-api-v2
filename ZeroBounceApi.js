@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const rp = require('request-promise');
 
 const baseUrl = 'https://api.zerobounce.net/v2';
@@ -11,7 +12,6 @@ const baseUrl = 'https://api.zerobounce.net/v2';
  * @constructor object
  */
 function
-// eslint-disable-next-line camelcase
 ZeroBounceApi(api_key) {
     return {
         /**
@@ -33,13 +33,12 @@ ZeroBounceApi(api_key) {
          * @return {string} - a JSONObject with all of the information
          * for the specified email
          */
-        // eslint-disable-next-line camelcase
         validate: (email, ip_address) => rp({
             uri: baseUrl + '/validate',
             qs: {
                 api_key,
                 email,
-                ip_address,
+                ip_address: (ip_address) ? ip_address : ' ',
             },
             json: true,
         }),
