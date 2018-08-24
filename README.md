@@ -15,8 +15,8 @@ zb.getCredits()
 ```
 ## Validate : 
 ```ecmascript 6
-zb.getCredits()
-  .validate((resp)=> console.log(resp)); // see resp values below
+zb.validate("imnothere@butiamstay.in")
+  .then((resp)=> console.log(resp)); // see resp values below
 ```
 **Properties and possible values returned by:**
 1. <b><i>validate</b></i> method
